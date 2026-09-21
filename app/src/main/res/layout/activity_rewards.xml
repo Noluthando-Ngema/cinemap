@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0B1020">
+
+    <!-- top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="CineMap"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView android:layout_width="24dp" android:layout_height="24dp" android:text="🔔" android:gravity="center" android:layout_marginEnd="12dp"/>
+        <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="👤" android:gravity="center" android:background="@drawable/bg_circle_icon"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
+
+            <!-- points circle -->
+            <LinearLayout
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/bg_circle_points"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView android:text="★" android:textColor="#E0D4FF" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,250 pts" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <TextView android:text="SILVER MEMBER" android:textColor="#888888" android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+            <!-- progress to gold -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="16dp" android:background="@drawable/bg_card_rounded" android:padding="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:text="Progress to Gold" android:textColor="#AAAAAA" android:textSize="11sp" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <TextView android:text="250 pts left" android:textColor="#AAAAAA" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressGold"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="8dp"
+                    android:max="1500"
+                    android:progress="1250"
+                    android:progressTint="#E0D4FF"
+                    android:progressBackgroundTint="#1F263B"/>
+            </LinearLayout>
+
+            <!-- your offers -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="20dp" android:gravity="center_vertical">
+                <TextView android:text="Your Offers" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/btnViewAll" android:text="View All" android:textColor="#E0D4FF" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+
+                <LinearLayout android:id="@+id/cardPopcorn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="@drawable/bg_offer_card" android:padding="12dp" android:layout_marginEnd="8dp">
+                    <TextView android:text="🍿" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Free Popcorn" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Small combo" android:textColor="#888888" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Use Now" android:textColor="#E0D4FF" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:background="@drawable/bg_chip_unselected" android:padding="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/cardDiscount" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="@drawable/bg_offer_card" android:padding="12dp" android:layout_marginStart="8dp">
+                    <TextView android:text="🎟️" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="20% Off" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Next Ticket" android:textColor="#888888" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Use Now" android:textColor="#E0D4FF" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:background="@drawable/bg_chip_unselected" android:padding="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- badges -->
+            <TextView android:text="Badges" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:weightSum="3">
+
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginEnd="8dp">
+                    <LinearLayout android:layout_width="64dp" android:layout_height="64dp" android:background="@drawable/bg_card_rounded" android:gravity="center">
+                        <TextView android:text="👹" android:textSize="24sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Horror Buff" android:textColor="#AAAAAA" android:textSize="11sp" android:layout_marginTop="6dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginEnd="8dp">
+                    <LinearLayout android:layout_width="64dp" android:layout_height="64dp" android:background="@drawable/bg_card_rounded" android:gravity="center">
+                        <TextView android:text="🌅" android:textSize="24sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Early Bird" android:textColor="#AAAAAA" android:textSize="11sp" android:layout_marginTop="6dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
+                    <LinearLayout android:layout_width="64dp" android:layout_height="64dp" android:background="@drawable/bg_card_rounded" android:gravity="center" android:alpha="0.4">
+                        <TextView android:text="🚀" android:textSize="24sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Sci-Fi Fanatic" android:textColor="#555555" android:textSize="11sp" android:layout_marginTop="6dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- bottom nav -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#161C2E">
+
+        <Button android:id="@+id/btnHome" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Home" android:backgroundTint="#161C2E" android:textColor="#888888"/>
+        <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Search" android:backgroundTint="#161C2E" android:textColor="#888888"/>
+        <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Rewards" android:backgroundTint="#161C2E" android:textColor="#E0D4FF"/>
+        <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Profile" android:backgroundTint="#161C2E" android:textColor="#888888"/>
+    </LinearLayout>
+</LinearLayout>

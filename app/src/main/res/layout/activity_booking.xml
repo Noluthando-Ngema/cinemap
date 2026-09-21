@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0B1020">
+
+    <!-- header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_media_previous"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Flow"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Movie Info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="64dp"
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:background="@drawable/bg_card_rounded"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvMovieTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The Last Cartographer"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Re-13  •  2h 14m  •  Sci-Fi"
+                        android:textColor="#888888"
+                        android:textSize="11sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- select date -->
+            <TextView
+                android:text="Select Date"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="5">
+
+                <LinearLayout android:id="@+id/date14" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_date_selected" android:padding="8dp" android:gravity="center" android:layout_marginEnd="6dp">
+                    <TextView android:text="TODAY" android:textColor="#0B1020" android:textSize="8sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="14" android:textColor="#0B1020" android:textSize="16sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/date15" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_date_unselected" android:padding="8dp" android:gravity="center" android:layout_marginEnd="6dp">
+                    <TextView android:text="FRI" android:textColor="#888888" android:textSize="8sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="15" android:textColor="#FFFFFF" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/date16" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_date_unselected" android:padding="8dp" android:gravity="center" android:layout_marginEnd="6dp">
+                    <TextView android:text="SAT" android:textColor="#888888" android:textSize="8sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="16" android:textColor="#FFFFFF" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/date17" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_date_unselected" android:padding="8dp" android:gravity="center" android:layout_marginEnd="6dp">
+                    <TextView android:text="SUN" android:textColor="#888888" android:textSize="8sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="17" android:textColor="#FFFFFF" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/date18" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_date_unselected" android:padding="8dp" android:gravity="center">
+                    <TextView android:text="MON" android:textColor="#888888" android:textSize="8sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="18" android:textColor="#FFFFFF" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- format & showtime -->
+            <TextView
+                android:text="Format &amp; Showtime"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Standard"
+                android:textColor="#888888"
+                android:textSize="11sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/time415"
+                    android:text="4:15 PM"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_time_unselected"
+                    android:textColor="#888888"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/time730"
+                    android:text="7:30 PM"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_time_selected"
+                    android:textColor="#0B1020"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="10:45 PM"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_time_unselected"
+                    android:textColor="#888888"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                android:text="IMAX Laser"
+                android:textColor="#888888"
+                android:textSize="11sp"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:text="6:00 PM"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_time_unselected"
+                    android:textColor="#888888"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="9:15 PM"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_time_unselected"
+                    android:textColor="#888888"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- choose seats -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:text="Choose Seats"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Screen"
+                    android:textColor="#888888"
+                    android:textSize="11sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- screen curve -->
+            <View
+                android:layout_width="200dp"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_screen_curve"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"/>
+
+            <!-- seats grid -->
+            <GridLayout
+                android:id="@+id/seatGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="8"
+                android:rowCount="4"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:horizontalSpacing="8dp"
+                android:verticalSpacing="8dp">
+            </GridLayout>
+
+            <!-- legend -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/bg_seat_available"/>
+
+                <TextView
+                    android:text=" Available"
+                    android:textColor="#888888"
+                    android:textSize="11sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/bg_seat_selected"/>
+
+                <TextView
+                    android:text=" Selected"
+                    android:textColor="#888888"
+                    android:textSize="11sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/bg_seat_taken"/>
+
+                <TextView
+                    android:text=" Taken"
+                    android:textColor="#888888"
+                    android:textSize="11sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- bottom bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:background="#161C2E"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTicketCount"
+                android:text="0 Tickets"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:text="$0.00"
+                android:textColor="#888888"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="180dp"
+            android:layout_height="44dp"
+            android:text="Select Seats to Continue"
+            android:textSize="12sp"
+            android:backgroundTint="#2A324D"
+            android:textColor="#888888"/>
+    </LinearLayout>
+</LinearLayout>

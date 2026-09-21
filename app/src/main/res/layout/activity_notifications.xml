@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0B1020">
+
+    <!-- top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="CineMap"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text="🔔"
+            android:gravity="center"
+            android:layout_marginEnd="12dp"/>
+
+        <TextView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text="👤"
+            android:gravity="center"
+            android:background="@drawable/bg_circle_icon"/>
+    </LinearLayout>
+
+    <!-- title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="You have 2 unread alerts."
+            android:textColor="#888888"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:text="✓"
+            android:gravity="center"
+            android:background="@drawable/bg_circle_icon"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <!-- filter chips -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp">
+
+            <TextView
+                android:id="@+id/chipAll"
+                android:text="All"
+                android:padding="8dp"
+                android:background="@drawable/bg_chip_selected"
+                android:textColor="#0B1020" android:layout_marginEnd="8dp"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/chipTickets"
+                android:text="Tickets"
+                android:padding="8dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:textColor="#888888"
+                android:layout_marginEnd="8dp"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/chipRewards"
+                android:text="Rewards"
+                android:padding="8dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:textColor="#888888"
+                android:layout_marginEnd="8dp"
+                android:textSize="12sp"/>
+            <TextView
+                android:text="News"
+                android:padding="8dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:textColor="#888888"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- list -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView android:text="TODAY" android:textColor="#888888" android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+            <!-- MOVIE ALERT CARD 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:text="🎬  MOVIE ALERT" android:textColor="#9BB6FF" android:textSize="10sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <TextView android:text="Just now" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView android:text="Dune: Part Two starts i..." android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="Your showtime at AMC Lincoln Square is approaching. Head to..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+                <Button android:layout_width="match_parent" android:layout_height="32dp" android:text="View Ticket" android:textSize="12sp" android:backgroundTint="#2A324D" android:textColor="#FFFFFF" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- REWARDS UPDATE CARD 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:text="⭐ REWARDS UPDATE" android:textColor="#7DFF9B" android:textSize="10sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <TextView android:text="2 hrs ago" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView android:text="You earned 500 points!" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="Thanks for purchasing concessions. You are now 150 points away fro..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView android:text="YESTERDAY" android:textColor="#888888" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_marginBottom="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+            <!-- BOOKING CONFIRMED CARD 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:text="🎟 BOOKING CONFIRMED" android:textColor="#9BB6FF" android:textSize="10sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <TextView android:text="Yesterday" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView android:text="Tickets for 'Oppenhel..." android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="2x VIP Seats booked for 7:30 PM tomorrow. Check your email for..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:layout_marginTop="24dp">
+                <TextView android:layout_width="36dp" android:layout_height="36dp" android:text="✓✓" android:gravity="center" android:background="@drawable/bg_circle_icon" android:textColor="#555555"/>
+                <TextView android:text="You're all caught up." android:textColor="#555555" android:textSize="12sp" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- bottom nav -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#161C2E">
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Home"
+            android:backgroundTint="#161C2E"
+            android:textColor="#888888"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Search"
+            android:backgroundTint="#161C2E"
+            android:textColor="#888888"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Rewards"
+            android:backgroundTint="#161C2E"
+            android:textColor="#888888"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Profile"
+            android:backgroundTint="#161C2E"
+            android:textColor="#E0D4FF"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base map color -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#151B2F"/>
+            <corners android:radius="12dp"/>
+            <stroke android:width="1dp" android:color="#2A324D"/>
+        </shape>
+    </item>
+    <!-- Streets -->
+    <item android:left="20dp" android:top="15dp" android:right="20dp" android:bottom="40dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#1F263B"/>
+        </shape>
+    </item>
+    <!-- Fake roads -->
+    <item android:left="0dp" android:top="35dp" android:right="0dp" android:bottom="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#2A324D"/>
+            <size android:height="1dp"/>
+        </shape>
+    </item>
+    <item android:left="60dp" android:top="0dp" android:right="0dp" android:bottom="0dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#2A324D"/>
+            <size android:width="1dp"/>
+        </shape>
+    </item>
+    <!-- Pins -->
+    <item android:left="30dp" android:top="20dp">
+        <shape android:shape="oval">
+            <solid android:color="#E0D4FF"/>
+            <size android:width="8dp" android:height="8dp"/>
+        </shape>
+    </item>
+    <item android:left="70dp" android:top="35dp">
+        <shape android:shape="oval">
+            <solid android:color="#E0D4FF"/>
+            <size android:width="8dp" android:height="8dp"/>
+        </shape>
+    </item>
+</layer-list>

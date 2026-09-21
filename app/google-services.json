@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "739460418776",
+    "project_id": "cinemap-e7282",
+    "storage_bucket": "cinemap-e7282.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739460418776:android:2f0867cae7e3ce7c951bad",
+        "android_client_info": {
+          "package_name": "com.example.cinemap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDki1El33YaBGbioDvM4H57RWDqNG-GprQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
