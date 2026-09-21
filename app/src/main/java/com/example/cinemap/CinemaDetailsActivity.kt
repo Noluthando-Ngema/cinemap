@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cinemap.databinding.ActivityCinemaDetailsBinding
-import com.google.android.libraries.maps.model.Marker
 import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.Marker
 
 class CinemaDetailsActivity : AppCompatActivity() {
 

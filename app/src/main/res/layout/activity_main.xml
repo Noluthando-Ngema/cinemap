@@ -1,138 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#0B1020">
+    android:background="#0F0F13">
 
-    <!-- top bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="CineMap"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@android:drawable/ic_menu_search"/>
-    </LinearLayout>
-
-    <!-- search bar -->
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="16dp"
-        android:hint="Search movies, cinemas..."
-        android:background="@drawable/bg_input_rounded"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#888888"
-        android:drawableStart="@android:drawable/ic_search_category_default"
-        android:drawablePadding="8dp"/>
-
-    <!-- content -->
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Now Showing Near You"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp"/>
-
-            <TextView
+            <!-- toolbar -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="🎬 Movies will load here from API"
-                android:gravity="center"
-                android:background="@drawable/bg_card_rounded"
-                android:textColor="#888888"/>
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="CineMap"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- search -->
+            <EditText
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:hint="Search movies, cinemas, genres..."
+                android:paddingStart="16dp"
+                android:textColorHint="#888"
+                android:textColor="#FFFFFF"/>
+
+            <!-- now showing -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Popular Cinemas"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Now Showing" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="See All" android:textColor="#6C5CE7"/>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+                <LinearLayout
+                    android:id="@+id/nowShowingRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"/>
+            </HorizontalScrollView>
+
+            <!-- cinemas near you  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"/>
+                android:paddingHorizontal="16dp">
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Cinemas Near You" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="View Map" android:textColor="#6C5CE7"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/cinemasList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"/>
+
+            <!-- top picks -->
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:text="📍 Map will show here"
-                android:gravity="center"
-                android:background="@drawable/bg_card_rounded"
-                android:textColor="#888888"/>
+                android:layout_height="wrap_content"
+                android:text="Top Picks For You"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp">
+                <LinearLayout
+                    android:id="@+id/topPicksRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"/>
+            </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>
 
-    <!-- bottom navigation -->
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="#161C2E"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:background="#1E1E26"
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu"/>
 
-        <Button
-            android:id="@+id/btnNavHome"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Home"
-            android:backgroundTint="#161C2E"
-            android:textColor="#E0D4FF"/>
-
-        <Button
-            android:id="@+id/btnNavSettings"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Settings"
-            android:backgroundTint="#161C2E"
-            android:textColor="#FFFFFF"/>
-
-        <Button
-            android:id="@+id/btnNavRewards"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Rewards"
-            android:backgroundTint="#161C2E"
-            android:textColor="#FFFFFF"/>
-
-        <Button
-            android:id="@+id/btnNavNotification"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Notifications"
-            android:backgroundTint="#161C2E"
-            android:textColor="#FFFFFF"/>
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

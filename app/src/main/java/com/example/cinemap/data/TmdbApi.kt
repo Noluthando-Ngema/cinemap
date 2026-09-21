@@ -9,11 +9,15 @@ interface TmdbApi {
         @Query("page") page: Int = 1
     ): MovieResponse
 
-    // Free cinema search - this replaces Google Places, no key needed
+    // free cinema search
     @GET("https://overpass-api.de/api/interpreter")
     suspend fun getNearbyCinemas(
         @Query("data") data: String
     ): OverpassResponse
+
+    @GET("movie/top_rated")
+    suspend fun getTopRated(@Query("api_key") apiKey: String
+    ): MovieResponse
 }
 // TMDB Movies
 data class MovieResponse(val results: List<Movie>)
