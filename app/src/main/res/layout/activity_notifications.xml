@@ -236,4 +236,5 @@
             android:backgroundTint="#161C2E"
             android:textColor="#E0D4FF"/>
     </LinearLayout>
+    <include layout="@layout/layout_bottom_nav"/>
 </LinearLayout>

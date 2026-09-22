@@ -128,17 +128,6 @@
                     android:orientation="horizontal"
                     android:paddingStart="16dp"/>
             </HorizontalScrollView>
+            <include layout="@layout/layout_bottom_nav"/>
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1E1E26"
-        app:itemIconTint="#FFFFFF"
-        app:itemTextColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

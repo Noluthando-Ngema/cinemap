@@ -28,36 +28,43 @@ class MainActivity : AppCompatActivity() {
         topPicksRow = findViewById(R.id.topPicksRow)
         cinemasList = findViewById(R.id.cinemasList)
 
-        setupBottomNavigation()
         loadRealMovies()
         loadRealCinemas() // free OpenStreetMap data
 
         findViewById<TextView>(R.id.btnViewMap).setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.openstreetmap.org/search?query=cinema%20near%20Vosloorus"))
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                android.net.Uri.parse("https://www.openstreetmap.org/search?query=cinema%20near%20Vosloorus")
+            )
             startActivity(intent)
         }
-    }
-
-    private fun setupBottomNavigation() {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottomNav.selectedItemId = R.id.nav_home
-        bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> true // already here
-                R.id.nav_rewards -> {
-                    startActivity(Intent(this, RewardsActivity::class.java))
-                    false
-                }
-                R.id.nav_notifications -> {
-                    startActivity(Intent(this, NotificationsActivity::class.java))
-                    false
-                }
-                R.id.nav_settings -> {
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                    false
-                }
-                else -> false
-            }
+        //bottom navigation
+        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    MainActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navRewards).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    RewardsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navNotifications).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    NotificationsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navSettings).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 

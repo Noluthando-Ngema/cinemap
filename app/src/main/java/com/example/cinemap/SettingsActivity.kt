@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cinemap.databinding.ActivitySettingsBinding
@@ -67,6 +68,34 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, RewardsActivity::class.java))
         }
         binding.btnNavSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        //bottom navigation
+        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    MainActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navRewards).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    RewardsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navNotifications).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    NotificationsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
     }

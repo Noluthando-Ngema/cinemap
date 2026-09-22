@@ -179,4 +179,5 @@
             android:textColor="#FFFFFF"/>
         </LinearLayout>
     </LinearLayout>
+    <include layout="@layout/layout_bottom_nav"/>
 </ScrollView>
