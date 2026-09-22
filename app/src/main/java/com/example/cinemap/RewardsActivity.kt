@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityRewardsBinding
 
 class RewardsActivity : AppCompatActivity() {
@@ -12,6 +13,11 @@ class RewardsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRewardsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         binding = ActivityRewardsBinding.inflate(layoutInflater)
         setContentView(binding.root)

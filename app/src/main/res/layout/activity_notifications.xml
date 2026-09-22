@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0B1020">
+    android:background="?attr/colorOnBackground">
 
     <!-- top bar -->
     <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="CineMap"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorText"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notifications"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorText"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
@@ -69,7 +69,7 @@
             android:text="✓"
             android:gravity="center"
             android:background="@drawable/bg_circle_icon"
-            android:textColor="#FFFFFF"/>
+            android:textColor="?attr/colorText"/>
     </LinearLayout>
 
     <!-- filter chips -->
@@ -145,10 +145,10 @@
                     <TextView android:text="Just now" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <TextView android:text="Dune: Part Two starts i..." android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="Dune: Part Two starts i..." android:textColor="?attr/colorText" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 <TextView android:text="Your showtime at AMC Lincoln Square is approaching. Head to..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 
-                <Button android:layout_width="match_parent" android:layout_height="32dp" android:text="View Ticket" android:textSize="12sp" android:backgroundTint="#2A324D" android:textColor="#FFFFFF" android:layout_marginTop="8dp"/>
+                <Button android:layout_width="match_parent" android:layout_height="32dp" android:text="View Ticket" android:textSize="12sp" android:backgroundTint="#2A324D" android:textColor="?attr/colorText" android:layout_marginTop="8dp"/>
             </LinearLayout>
 
             <!-- REWARDS UPDATE CARD 2 -->
@@ -165,7 +165,7 @@
                     <TextView android:text="2 hrs ago" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <TextView android:text="You earned 500 points!" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="You earned 500 points!" android:textColor="?attr/colorText" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 <TextView android:text="Thanks for purchasing concessions. You are now 150 points away fro..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -185,7 +185,7 @@
                     <TextView android:text="Yesterday" android:textColor="#555555" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
 
-                <TextView android:text="Tickets for 'Oppenhel..." android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="Tickets for 'Oppenhel..." android:textColor="?attr/colorText" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 <TextView android:text="2x VIP Seats booked for 7:30 PM tomorrow. Check your email for..." android:textColor="#AAAAAA" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -201,7 +201,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="#161C2E">
+        android:background="?attr/colorCard">
 
         <Button
             android:id="@+id/btnHome"

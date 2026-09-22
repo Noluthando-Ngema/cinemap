@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0B1020">
+    android:background="?attr/colorOnBackground">
 
     <!-- header -->
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Booking Flow"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorText"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginStart="12dp"/>
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="The Last Cartographer"
-                        android:textColor="#FFFFFF"
+                        android:textColor="?attr/colorText"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
@@ -81,7 +81,7 @@
             <!-- select date -->
             <TextView
                 android:text="Select Date"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -124,7 +124,7 @@
             <!-- format & showtime -->
             <TextView
                 android:text="Format &amp; Showtime"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
@@ -220,7 +220,7 @@
 
                 <TextView
                     android:text="Choose Seats"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
@@ -310,7 +310,7 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:orientation="horizontal"
-        android:background="#161C2E"
+        android:background="?attr/colorCard"
         android:padding="16dp"
         android:gravity="center_vertical">
 
@@ -323,7 +323,7 @@
             <TextView
                 android:id="@+id/tvTicketCount"
                 android:text="0 Tickets"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"

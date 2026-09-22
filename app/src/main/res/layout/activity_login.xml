@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0B1020"
+    android:background="?attr/colorOnBackground"
     android:padding="24dp"
     android:gravity="center">
 
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome Back"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorText"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="24dp"/>
@@ -29,7 +29,7 @@
         android:hint="Email"
         android:background="@drawable/bg_input_rounded"
         android:padding="12dp"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorText"
         android:textColorHint="#888888"
         android:layout_marginBottom="12dp"/>
 
@@ -49,7 +49,7 @@
         android:inputType="textPassword"
         android:background="@drawable/bg_input_rounded"
         android:padding="12dp"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorText"
         android:textColorHint="#888888"
         android:layout_marginBottom="20dp"/>
     <TextView

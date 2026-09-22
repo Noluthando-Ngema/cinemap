@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityPaymentBinding
 
 class PaymentActivity : AppCompatActivity() {
@@ -13,6 +14,11 @@ class PaymentActivity : AppCompatActivity() {
     private var finalTotal = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)

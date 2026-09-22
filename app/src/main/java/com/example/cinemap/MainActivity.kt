@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.cinemap.data.RetrofitClient
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cinemasList: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

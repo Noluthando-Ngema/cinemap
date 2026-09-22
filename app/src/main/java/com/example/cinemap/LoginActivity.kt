@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -14,6 +15,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityBookingBinding
 
 class BookingActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class BookingActivity : AppCompatActivity() {
     private val selectedSeatsMap = mutableMapOf<String, String>() // seatId to row
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs= getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)

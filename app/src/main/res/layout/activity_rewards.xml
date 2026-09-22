@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0B1020">
+    android:background="?attr/colorOnBackground">
 
     <!-- top bar -->
     <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="CineMap"
-            android:textColor="#FFFFFF"
+            android:textColor="?attr/colorText"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -47,7 +47,7 @@
                 android:orientation="vertical">
 
                 <TextView android:text="★" android:textColor="#E0D4FF" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,250 pts" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="4dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,250 pts" android:textColor="?attr/colorText" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="4dp"/>
             </LinearLayout>
 
             <TextView android:text="SILVER MEMBER" android:textColor="#888888" android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
@@ -74,7 +74,7 @@
 
             <!-- your offers -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="20dp" android:gravity="center_vertical">
-                <TextView android:text="Your Offers" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                <TextView android:text="Your Offers" android:textColor="?attr/colorText" android:textSize="16sp" android:textStyle="bold" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/btnViewAll" android:text="View All" android:textColor="#E0D4FF" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
 
@@ -82,21 +82,21 @@
 
                 <LinearLayout android:id="@+id/cardPopcorn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="@drawable/bg_offer_card" android:padding="12dp" android:layout_marginEnd="8dp">
                     <TextView android:text="🍿" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="Free Popcorn" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Free Popcorn" android:textColor="?attr/colorText" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                     <TextView android:text="Small combo" android:textColor="#888888" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                     <TextView android:text="Use Now" android:textColor="#E0D4FF" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:background="@drawable/bg_chip_unselected" android:padding="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <LinearLayout android:id="@+id/cardDiscount" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="@drawable/bg_offer_card" android:padding="12dp" android:layout_marginStart="8dp">
                     <TextView android:text="🎟️" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="20% Off" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="20% Off" android:textColor="?attr/colorText" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                     <TextView android:text="Next Ticket" android:textColor="#888888" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                     <TextView android:text="Use Now" android:textColor="#E0D4FF" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:background="@drawable/bg_chip_unselected" android:padding="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
 
             <!-- badges -->
-            <TextView android:text="Badges" android:textColor="#FFFFFF" android:textSize="16sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
+            <TextView android:text="Badges" android:textColor="?attr/colorText" android:textSize="16sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:weightSum="3">
 
@@ -129,9 +129,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="#161C2E">
+        android:background="?attr/colorCard">
 
-        <Button android:id="@+id/btnHome" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Home" android:backgroundTint="#161C2E" android:textColor="#888888"/>
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Home" android:backgroundTint="#161C2E" android:textColor="#888888"/>
         <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Search" android:backgroundTint="#161C2E" android:textColor="#888888"/>
         <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Rewards" android:backgroundTint="#161C2E" android:textColor="#E0D4FF"/>
         <Button android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:text="Profile" android:backgroundTint="#161C2E" android:textColor="#888888"/>

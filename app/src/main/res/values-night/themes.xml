@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CineMap" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorBackground">@color/background_dark</item>
+        <item name="colorOnBackground">@color/background_dark</item>
+        <item name="colorCard">@color/card_dark</item>
+        <item name="colorText">@color/text_dark</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+    </style>
+</resources>

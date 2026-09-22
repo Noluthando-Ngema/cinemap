@@ -3,6 +3,7 @@ package com.example.cinemap
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityPaymentConfirmationBinding
 import kotlin.random.Random
 
@@ -11,6 +12,11 @@ class PaymentConfirmationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentConfirmationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)

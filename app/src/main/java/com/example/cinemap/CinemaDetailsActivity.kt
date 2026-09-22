@@ -3,8 +3,10 @@ package com.example.cinemap
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.cinemap.databinding.ActivityCinemaDetailsBinding
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
@@ -15,6 +17,11 @@ class CinemaDetailsActivity : AppCompatActivity() {
     private lateinit var map: org.osmdroid.views.MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("theme", MODE_PRIVATE)
+        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
         binding = ActivityCinemaDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -73,6 +80,34 @@ class CinemaDetailsActivity : AppCompatActivity() {
             val geoUri = "geo:${cinemaLocation.latitude},${cinemaLocation.longitude}?q=${cinemaLocation.latitude},${cinemaLocation.longitude}(${name})"
             val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri))
             startActivity(intent)
+        }
+        // bottom navigation
+        findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    MainActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navRewards).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    RewardsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navNotifications).setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    NotificationsActivity::class.java
+                )
+            )
+        }
+        findViewById<LinearLayout>(R.id.navSettings).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 }

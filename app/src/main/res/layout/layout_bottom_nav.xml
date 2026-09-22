@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:orientation="horizontal"
-    android:background="#1E1E26"
+    android:background="?attr/colorCard"
     android:gravity="center">
 
     <LinearLayout
@@ -12,7 +12,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:textSize="12sp"/>
 
     </LinearLayout>
@@ -34,7 +36,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rewards"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:textSize="12sp"/>
 
     </LinearLayout>
@@ -56,7 +60,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alerts"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:textSize="12sp"/>
 
     </LinearLayout>
@@ -79,7 +85,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:textSize="12sp"/>
 
     </LinearLayout>

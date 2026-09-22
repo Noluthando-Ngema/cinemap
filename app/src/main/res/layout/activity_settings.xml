@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0F0F13"
+    android:background="?attr/colorOnBackground"
     android:padding="16dp">
 
     <!-- top bar -->
@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="CineMap"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Alex Mercer"
-        android:textColor="White"
+        android:textColor="?attr/colorText"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"/>
@@ -104,7 +104,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Personal Information"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:layout_marginStart="12dp"/>
 
         <TextView
@@ -133,7 +133,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Payment Methods"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:layout_marginStart="12dp"/>
 
         <TextView
@@ -172,7 +172,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Preferred Language"
-            android:textColor="White"
+            android:textColor="?attr/colorText"
             android:layout_marginStart="12dp"/>
 
         <TextView
@@ -208,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Offline Mode"
-                android:textColor="White"/>
+                android:textColor="?attr/colorText"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -250,7 +250,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dark Theme"
-                android:textColor="White"/>
+                android:textColor="?attr/colorText"/>
 
             <TextView
                 android:layout_width="wrap_content"
