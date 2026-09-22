@@ -76,8 +76,26 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="24dp"
                 android:paddingHorizontal="16dp">
-                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Cinemas Near You" android:textColor="#FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="View Map" android:textColor="#6C5CE7"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Cinemas Near You"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/btnViewMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Map"
+                    android:textColor="#6C5CE7"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="8dp"/>
+
             </LinearLayout>
 
             <LinearLayout

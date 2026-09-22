@@ -30,7 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         setupBottomNavigation()
         loadRealMovies()
-        loadRealCinemas() // Free OpenStreetMap data
+        loadRealCinemas() // free OpenStreetMap data
+
+        findViewById<TextView>(R.id.btnViewMap).setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.openstreetmap.org/search?query=cinema%20near%20Vosloorus"))
+            startActivity(intent)
+        }
     }
 
     private fun setupBottomNavigation() {

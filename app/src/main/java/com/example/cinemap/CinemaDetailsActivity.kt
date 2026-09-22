@@ -36,7 +36,7 @@ class CinemaDetailsActivity : AppCompatActivity() {
         }
         // get directions
         binding.btnDirections.setOnClickListener {
-            // This still works - no API key needed, opens Google Maps app
+            // no API key needed, opens Google Maps app
             val uri = Uri.parse("geo:0,0?q=$address")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.google.android.apps.maps")
@@ -50,18 +50,29 @@ class CinemaDetailsActivity : AppCompatActivity() {
         }
         // setup map
         org.osmdroid.config.Configuration.getInstance().userAgentValue = packageName
+        org.osmdroid.config.Configuration.getInstance().load(this, getSharedPreferences("osmdroid", MODE_PRIVATE))
 
-        map = binding.mapView // or findViewById(R.id.mapView) if binding doesn't have it
+        val map = binding.mapView
+        map.setTileSource(org.osmdroid.tileprovider.tilesource.TileSourceFactory.MAPNIK)
         map.setMultiTouchControls(true)
 
-        val cinemaLocation = GeoPoint(-26.3557, 28.2086) // Vosloorus
-        map.controller.setZoom(13.0)
+        val cinemaLocation = org.osmdroid.util.GeoPoint(-26.3557, 28.2086) // Vosloorus - replace with real lat/lng later
+        map.controller.setZoom(15.0)
         map.controller.setCenter(cinemaLocation)
 
-        val marker = Marker(map)
+        val marker = org.osmdroid.views.overlay.Marker(map)
         marker.position = cinemaLocation
-        marker.title = name
+        marker.title = name ?: "Cinema"
+        marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM)
         map.overlays.add(marker)
         map.invalidate()
+
+        //makes directions more reliable
+        binding.btnDirections.setOnClickListener {
+            // if address is empty, use coordinates
+            val geoUri = "geo:${cinemaLocation.latitude},${cinemaLocation.longitude}?q=${cinemaLocation.latitude},${cinemaLocation.longitude}(${name})"
+            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri))
+            startActivity(intent)
+        }
     }
 }
