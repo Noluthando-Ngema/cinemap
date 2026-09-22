@@ -9,16 +9,20 @@ interface TmdbApi {
         @Query("page") page: Int = 1
     ): MovieResponse
 
-    // free cinema search
-    @GET("https://overpass-api.de/api/interpreter")
+    @GET("movie/top_rated")
+    suspend fun getTopRated(
+        @Query("api_key") apiKey: String
+    ): MovieResponse
+}
+
+// Create a SECOND interface for free cinemas
+interface OverpassApi {
+    @GET("interpreter")
     suspend fun getNearbyCinemas(
         @Query("data") data: String
     ): OverpassResponse
-
-    @GET("movie/top_rated")
-    suspend fun getTopRated(@Query("api_key") apiKey: String
-    ): MovieResponse
 }
+
 // TMDB Movies
 data class MovieResponse(val results: List<Movie>)
 data class Movie(

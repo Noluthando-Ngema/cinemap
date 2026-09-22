@@ -30,13 +30,14 @@
             android:id="@+id/txtCinemaAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#999"
+            android:textColor="?attr/colorOnBackground"
             android:textSize="12sp"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=">" android:textColor="?attr/colorText"/>
+        android:text=">"
+        android:textColor="?attr/colorOnBackground"/>
 
 </LinearLayout>

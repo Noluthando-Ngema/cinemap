@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.cinemap.data.RetrofitClient
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val prefs = getSharedPreferences("theme", MODE_PRIVATE)
-        val isDark = prefs.getBoolean("isDark", true) // true = dark default
+        val isDark = prefs.getBoolean("isDark", true)
         AppCompatDelegate.setDefaultNightMode(
             if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
         )
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         cinemasList = findViewById(R.id.cinemasList)
 
         loadRealMovies()
-        loadRealCinemas() // free OpenStreetMap data
+        loadRealCinemas()
 
         findViewById<TextView>(R.id.btnViewMap).setOnClickListener {
             val intent = Intent(
@@ -44,30 +43,16 @@ class MainActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
-        //bottom navigation
+
+        // bottom navigation - FIXED so Home doesn't crash loop
         findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    MainActivity::class.java
-                )
-            )
+            // already on home, do nothing
         }
         findViewById<LinearLayout>(R.id.navRewards).setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    RewardsActivity::class.java
-                )
-            )
+            startActivity(Intent(this, RewardsActivity::class.java))
         }
         findViewById<LinearLayout>(R.id.navNotifications).setOnClickListener {
-            startActivity(
-                Intent(
-                    this,
-                    NotificationsActivity::class.java
-                )
-            )
+            startActivity(Intent(this, NotificationsActivity::class.java))
         }
         findViewById<LinearLayout>(R.id.navSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
@@ -85,22 +70,25 @@ class MainActivity : AppCompatActivity() {
                     card.findViewById<TextView>(R.id.txtMovieTitle).text = movie.title
                     val img = card.findViewById<ImageView>(R.id.imgMoviePoster)
                     Glide.with(this@MainActivity).load(movie.getPosterUrl()).into(img)
+
+                    // FIX: Movie click -> Booking as cinema movie
                     card.setOnClickListener {
-                        startActivity(
-                            Intent(
-                                this@MainActivity,
-                                CinemaDetailsActivity::class.java
-                            ).apply {
-                                putExtra("title", movie.title)
-                                putExtra("overview", movie.overview)
-                                putExtra("poster", movie.getPosterUrl())
-                                putExtra("rating", movie.vote_average.toString())
-                            })
+                        val intent = Intent(this@MainActivity, BookingActivity::class.java).apply {
+                            putExtra("title", movie.title)
+                            putExtra("overview", movie.overview)
+                            putExtra("poster", movie.getPosterUrl())
+                            putExtra("rating", movie.vote_average.toString())
+                            putExtra("movieId", movie.id)
+                            // Fake cinema data because no Ster-Kinekor key
+                            putExtra("cinema_name", "East Rand Mall - Ster-Kinekor")
+                            putExtra("ticketPrice", "R 120")
+                            putExtra("showTimes", "13:00, 16:30, 19:00, 21:30")
+                        }
+                        startActivity(intent)
                     }
                     nowShowingRow.addView(card)
                 }
 
-                // Top Picks = same but different page for variety
                 val topPicks = RetrofitClient.tmdbApi.getTopRated(RetrofitClient.TMDB_API_KEY)
                 topPicksRow.removeAllViews()
                 topPicks.results.take(5).forEach { movie ->
@@ -110,29 +98,28 @@ class MainActivity : AppCompatActivity() {
                     val img = card.findViewById<ImageView>(R.id.imgMoviePoster)
                     Glide.with(this@MainActivity).load(movie.getPosterUrl()).into(img)
                     card.setOnClickListener {
-                        startActivity(
-                            Intent(
-                                this@MainActivity,
-                                CinemaDetailsActivity::class.java
-                            ).apply {
-                                putExtra("title", movie.title)
-                                putExtra("overview", movie.overview)
-                                putExtra("poster", movie.getPosterUrl())
-                            })
+                        val intent = Intent(this@MainActivity, BookingActivity::class.java).apply {
+                            putExtra("title", movie.title)
+                            putExtra("overview", movie.overview)
+                            putExtra("poster", movie.getPosterUrl())
+                            putExtra("rating", movie.vote_average.toString())
+                            putExtra("movieId", movie.id)
+                            putExtra("cinema_name", "Carnival City - Nu Metro")
+                            putExtra("ticketPrice", "R 150")
+                            putExtra("showTimes", "14:00, 17:00, 20:00")
+                        }
+                        startActivity(intent)
                     }
                     topPicksRow.addView(card)
                 }
 
             } catch (e: Exception) {
-                Toast.makeText(this@MainActivity, "TMDB Error: ${e.message}", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(this@MainActivity, "TMDB Error: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun loadRealCinemas() {
-        // Real cinemas near Vosloorus - from Overpass (free) + hardcoded fallback
-        // These are REAL Ster-Kinekor / Nu Metro
         val realCinemas = listOf(
             Triple("East Rand Mall - Ster-Kinekor", "123 East Rand Mall", "1.2 mi • 4.8"),
             Triple("Carnival City - Nu Metro", "Carnival City Complex", "3.5 mi • 4.6"),
@@ -141,8 +128,7 @@ class MainActivity : AppCompatActivity() {
 
         cinemasList.removeAllViews()
         realCinemas.forEach { (name, address, meta) ->
-            val row =
-                LayoutInflater.from(this).inflate(R.layout.item_cinema_row, cinemasList, false)
+            val row = LayoutInflater.from(this).inflate(R.layout.item_cinema_row, cinemasList, false)
             row.findViewById<TextView>(R.id.txtCinemaName).text = name
             row.findViewById<TextView>(R.id.txtCinemaAddress).text = "$address • $meta"
             row.setOnClickListener {

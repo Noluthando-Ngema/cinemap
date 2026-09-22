@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorOnBackground"
+    android:background="?attr/colorBackground"
     android:padding="24dp"
     android:gravity="center">
 
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Account"
-        android:textColor="?attr/colorText"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="24dp"/>
@@ -29,8 +29,8 @@
         android:hint="Full Name"
         android:background="@drawable/bg_input_rounded"
         android:padding="12dp"
-        android:textColor="?attr/colorText"
-        android:textColorHint="#888888"
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnSurfaceVariant"
         android:layout_marginBottom="12dp"/>
 
     <EditText
@@ -40,9 +40,11 @@
         android:hint="Email"
         android:background="@drawable/bg_input_rounded"
         android:padding="12dp"
-        android:textColor="?attr/colorText"
-        android:textColorHint="#888888"
-        android:layout_marginBottom="12dp"/>
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnSurfaceVariant"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="4dp"/>
+
     <TextView
         android:id="@+id/tvEmailError"
         android:layout_width="match_parent"
@@ -50,7 +52,8 @@
         android:textColor="#FF5252"
         android:textSize="11sp"
         android:visibility="gone"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginBottom="8dp"/>
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -59,9 +62,10 @@
         android:inputType="textPassword"
         android:background="@drawable/bg_input_rounded"
         android:padding="12dp"
-        android:textColor="?attr/colorText"
-        android:textColorHint="#888888"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="?attr/colorOnBackground"
+        android:textColorHint="?attr/colorOnSurfaceVariant"
+        android:layout_marginBottom="4dp"/>
+
     <TextView
         android:id="@+id/tvPasswordError"
         android:layout_width="match_parent"
@@ -69,7 +73,8 @@
         android:textColor="#FF5252"
         android:textSize="11sp"
         android:visibility="gone"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginBottom="12dp"/>
+
     <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
@@ -83,9 +88,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already have an account? Login"
-        android:textColor="#888888"
+        android:textColor="?attr/colorOnSurfaceVariant"
         android:textSize="13sp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </LinearLayout>

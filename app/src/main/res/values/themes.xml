@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.CineMap" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorBackground">@color/background_light</item>
-        <item name="colorOnBackground">@color/background_light</item>
-        <item name="colorCard">@color/card_light</item>
-        <item name="colorText">@color/text_light</item>
-        <item name="android:windowBackground">@color/background_light</item>
+    <style name="Theme.CineMap" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorBackground">@android:color/white</item>
+        <item name="colorOnBackground">#0F0F13</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">#0F0F13</item>
+        <item name="colorCard">#F1F1F5</item>
+        <item name="colorText">#0F0F13</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 </resources>

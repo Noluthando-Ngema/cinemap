@@ -3,45 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorOnBackground"
+    android:background="?attr/colorBackground"
     android:padding="16dp">
 
-    <!-- top bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="CineMap"
-            android:textColor="?attr/colorText"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🔔" android:textSize="20sp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp" android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Settings" android:textColor="?attr/colorOnBackground" android:textSize="20sp" android:textStyle="bold"/>
     </LinearLayout>
 
-    <!-- profile -->
-    <FrameLayout
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp">
-
+    <!-- profile picture with edit icon - added framelayout with edit button -->
+    <FrameLayout android:layout_width="90dp" android:layout_height="90dp" android:layout_gravity="center" android:layout_marginTop="16dp">
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:background="@drawable/bg_circle"
-            android:scaleType="centerCrop"/>
-
+            android:scaleType="centerCrop"
+            android:clipToOutline="true"/>
+        <!-- this is the pen button - now inside framelayout at bottom end -->
         <ImageView
             android:id="@+id/btnEditPic"
             android:layout_width="28dp"
@@ -52,229 +30,28 @@
             android:padding="6dp"/>
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Alex Mercer"
-        android:textColor="?attr/colorText"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"/>
+    <TextView android:id="@+id/txtName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="Alex Mercer" android:textColor="?attr/colorOnBackground" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="8dp"/>
+    <TextView android:id="@+id/txtEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="alex.mercer@cinemap.com" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="13sp"/>
 
-    <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="alex.mercer@cinemap.com"
-        android:textColor="#888"
-        android:textSize="13sp"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ACCOUNT" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="12sp" android:layout_marginTop="24dp"/>
 
-    <!-- account -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ACCOUNT"
-        android:textColor="#666"
-        android:textSize="12sp"
-        android:layout_marginTop="24dp"/>
-
-    <LinearLayout
-        android:id="@+id/btnPersonalInfo"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="👤"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Personal Information"
-            android:textColor="?attr/colorText"
-            android:layout_marginStart="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=">"
-            android:textColor="#666"/>
+    <LinearLayout android:id="@+id/btnPersonalInfo" android:layout_width="match_parent" android:layout_height="56dp" android:orientation="horizontal" android:background="?attr/colorSurfaceVariant" android:gravity="center_vertical" android:padding="12dp" android:layout_marginTop="8dp" android:clickable="true" android:focusable="true">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👤" android:textSize="18sp"/>
+        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Personal Information" android:textColor="?attr/colorOnBackground" android:layout_marginStart="12dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:textColor="?attr/colorOnSurfaceVariant"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PREFERENCES" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="12sp" android:layout_marginTop="24dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="💳" android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Payment Methods"
-            android:textColor="?attr/colorText"
-            android:layout_marginStart="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=">"
-            android:textColor="#666"/>
-    </LinearLayout>
-
-    <!-- prefences -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PREFERENCES"
-        android:textColor="#666"
-        android:textSize="12sp"
-        android:layout_marginTop="24dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🌐"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Preferred Language"
-            android:textColor="?attr/colorText"
-            android:layout_marginStart="12dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="English"
-            android:textColor="#888"
-            android:textSize="12sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📥" android:textSize="18sp"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Offline Mode"
-                android:textColor="?attr/colorText"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save tickets locally"
-                android:textColor="#666"
-                android:textSize="11sp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:orientation="horizontal" android:background="?attr/colorSurfaceVariant" android:gravity="center_vertical" android:padding="12dp" android:layout_marginTop="8dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌙" android:textSize="18sp"/>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dark Theme" android:textColor="?attr/colorOnBackground"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cinematic viewing" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="11sp"/>
         </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchOffline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <Switch android:id="@+id/switchTheme" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true"/>
     </LinearLayout>
 
-    <!-- dark theme switch -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🌙" android:textSize="18sp"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dark Theme"
-                android:textColor="?attr/colorText"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cinematic viewing"
-                android:textColor="#666"
-                android:textSize="11sp"/>
-        </LinearLayout>
-        <!-- theme switch -->
-        <Switch
-            android:id="@+id/switchTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"/>
-    </LinearLayout>
-    <!-- signout button -->
-    <Button
-        android:id="@+id/btnSignOut"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Sign Out"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#3A1A1A"/>
-
-    <!-- bottom nav -->
+    <Button android:id="@+id/btnSignOut" android:layout_width="match_parent" android:layout_height="50dp" android:text="Sign Out" android:layout_marginTop="24dp" android:backgroundTint="#3A1A1A"/>
     <include layout="@layout/layout_bottom_nav"/>
 </LinearLayout>

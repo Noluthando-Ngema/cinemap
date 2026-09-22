@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnBackground">
+    android:background="?attr/colorBackground">
 
     <ScrollView
         android:layout_width="0dp"
@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- toolbar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -30,12 +29,11 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="CineMap"
-                    android:textColor="?attr/colorText"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="22sp"
                     android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- search -->
             <EditText
                 android:id="@+id/searchBar"
                 android:layout_width="match_parent"
@@ -44,17 +42,27 @@
                 android:background="@drawable/bg_input_rounded"
                 android:hint="Search movies, cinemas, genres..."
                 android:paddingStart="16dp"
-                android:textColorHint="#888"
-                android:textColor="?attr/colorText"/>
+                android:textColor="?attr/colorOnBackground"
+                android:textColorHint="?attr/colorOnSurfaceVariant"/>
 
-            <!-- now showing -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingHorizontal="16dp">
-                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Now Showing" android:textColor="?attr/colorText" android:textSize="18sp" android:textStyle="bold"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="See All" android:textColor="#6C5CE7"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Now Showing"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See All"
+                    android:textColor="#6C5CE7"/>
             </LinearLayout>
 
             <HorizontalScrollView
@@ -69,33 +77,27 @@
                     android:paddingStart="16dp"/>
             </HorizontalScrollView>
 
-            <!-- cinemas near you  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="24dp"
                 android:paddingHorizontal="16dp">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Cinemas Near You"
-                    android:textColor="?attr/colorText"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
-
                 <TextView
                     android:id="@+id/btnViewMap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View Map"
                     android:textColor="#6C5CE7"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:padding="8dp"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -105,12 +107,11 @@
                 android:orientation="vertical"
                 android:padding="16dp"/>
 
-            <!-- top picks -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Top Picks For You"
-                android:textColor="?attr/colorText"
+                android:textColor="?attr/colorOnBackground"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingHorizontal="16dp"
@@ -138,5 +139,4 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <include layout="@layout/layout_bottom_nav"/>
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
