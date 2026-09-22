@@ -1,4 +1,11 @@
-Overview
+Members involved in the making of CineMap
+1. Noluthando Ngema
+2. Anele Ndlovu
+3. Phumelele Ngozo
+4. Nosipho Tshabalala
+
+
+ CineMap Overview
 
 CineMap is a comprehensive Android application built with Kotlin that simplifies the movie-going experience. It allows users to locate the nearest cinema, and see what movies are showing in that cinema. 
 Purpose of the app
