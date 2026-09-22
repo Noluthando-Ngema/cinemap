@@ -26,8 +26,13 @@ Our workflow is defined in .github/workflows/android.yml. It triggers on every p
 What the Action does:
 1.	Sets up JDK: Configures Java Development Kit (JDK) version.
 2.	Gradle Build: Runs ./gradlew build to compile the Kotlin code.
-3.	Linting: Runs ./gradlew lint to check for code quality issues.
-4.	Testing: Executes unit tests via ./gradlew test.
+
+Which AI tools were used? 
+
+For this application, we used Gemini and Claude to help with aligning the app theme with the mockup submitted in Part 1, including identifying and correcting colour codes (e.g. #0F0F13, #FFFFFF) to match the design. We also used both of them to guide me on how to properly implement the dark and light mode switch functionality, ensuring the entire application changes theme. Additionally, we used them to generate the seat selection grid layout and logic, as we were unfamiliar with implementing a dynamic grid for seat booking, to create certain card drawables for the bottom navigation icons and styling, and to assist with implementing a free maps alternative (osmdroid/OpenStreetMap) after finding that Google Maps API requires billing.
+
+4.	Linting: Runs ./gradlew lint to check for code quality issues.
+5.	Testing: Executes unit tests via ./gradlew test.
 
 
 
