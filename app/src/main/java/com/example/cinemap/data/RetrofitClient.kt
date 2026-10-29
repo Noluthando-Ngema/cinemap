@@ -9,10 +9,12 @@ import java.io.File
 
 object RetrofitClient {
     const val TMDB_API_KEY = "9755fb7dbfc1eec99511ea7c8538ea3b"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    private var retrofit: Retrofit? = null
 
     val tmdbApi: TmdbApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(TmdbApi::class.java)
@@ -26,6 +28,7 @@ object RetrofitClient {
             .build()
             .create(TmdbApi::class.java)
     }
+
     fun getInstance(context: Context): Retrofit {
         if (retrofit == null) {
             // 10 MB cache

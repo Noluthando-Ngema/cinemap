@@ -1,11 +1,13 @@
 package com.example.cinemap
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.example.cinemap.R
+import androidx.core.content.ContextCompat
 
 object NotificationHelper {
 
@@ -30,7 +32,7 @@ object NotificationHelper {
         createChannel(context)
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_ticket) // change to your icon if different
+            .setSmallIcon(R.drawable.cinemap_icon)
             .setContentTitle(title)
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
@@ -38,7 +40,12 @@ object NotificationHelper {
             .setAutoCancel(true)
             .build()
 
-        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as
-                NotificationManager manager.notify(System.currentTimeMillis().toInt(), notification)
+        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+        ) {
+            manager.notify(System.currentTimeMillis().toInt(), notification)
+        }
     }
 }

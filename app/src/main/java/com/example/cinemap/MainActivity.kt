@@ -1,6 +1,10 @@
 package com.example.cinemap
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -10,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.cinemap.data.RetrofitClient
@@ -41,7 +46,7 @@ class MainActivity : BaseActivity() {
         findViewById<TextView>(R.id.btnViewMap).setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_VIEW,
-                android.net.Uri.parse("https://www.openstreetmap.org/search?query=cinema%20near%20Vosloorus")
+                Uri.parse("https://www.openstreetmap.org/search?query=cinema%20near%20Vosloorus")
             )
             startActivity(intent)
         }
@@ -60,6 +65,12 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
+            }
+        }
     }
 
     private fun loadRealMovies() {
@@ -159,6 +170,5 @@ class MainActivity : BaseActivity() {
         } else{
             startActivity(Intent(this, BookingActivity::class.java))
         }
-        }
-
+    }
 }

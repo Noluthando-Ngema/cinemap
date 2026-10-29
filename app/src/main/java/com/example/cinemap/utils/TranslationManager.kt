@@ -12,13 +12,11 @@ object TranslationManager {
 
     private fun getLangCode(name: String): String = when(name) {
         "Afrikaans" -> "af"
-        "isiZulu" -> "zu"
         else -> "en"
     }
 
     private fun getMlKitLang(name: String) = when(name) {
         "Afrikaans" -> TranslateLanguage.AFRIKAANS
-        "isiZulu" -> TranslateLanguage.ZULU
         else -> TranslateLanguage.ENGLISH
     }
 

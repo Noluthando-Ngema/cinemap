@@ -5,6 +5,10 @@
     <color name="black">#FF000000</color>
     <color name="gray_dark">#2A324D</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="text_primary">@color/text_dark</color>
+    <color name="text_secondary">@color/text_secondary_dark</color>
+
     <!-- light theme colors -->
     <color name="background_light">#FFFFFF</color>
     <color name="card_light">#F1F1F5</color>
