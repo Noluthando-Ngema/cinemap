@@ -11,7 +11,7 @@ import com.example.cinemap.databinding.ActivityCinemaDetailsBinding
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
 
-class CinemaDetailsActivity : AppCompatActivity() {
+class CinemaDetailsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCinemaDetailsBinding
     private lateinit var map: org.osmdroid.views.MapView

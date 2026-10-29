@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.cinemap.data.RetrofitClient
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var nowShowingRow: LinearLayout
     private lateinit var topPicksRow: LinearLayout
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val isDark = prefs.getBoolean("isDark", true)
         AppCompatDelegate.setDefaultNightMode(
             if (isDark) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+
         )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // bottom navigation - FIXED so Home doesn't crash loop
+        // bottom navigation
         findViewById<LinearLayout>(R.id.navHome).setOnClickListener {
             // already on home, do nothing
         }
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.navSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
+
     }
 
     private fun loadRealMovies() {
@@ -140,4 +143,22 @@ class MainActivity : AppCompatActivity() {
             cinemasList.addView(row)
         }
     }
+    fun onBookClicked() {
+        val isOffline = getSharedPreferences("CineMapPrefs", MODE_PRIVATE)
+            .getBoolean("offline_mode", false)
+
+        if (isOffline) {
+            AlertDialog.Builder(this)
+                .setTitle("Offline Mode")
+                .setMessage("Turn OFF offline mode in Settings to book. Bookings need internet.")
+                .setPositiveButton("Go to Settings") { _, _ ->
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                }
+                .show()
+            return
+        } else{
+            startActivity(Intent(this, BookingActivity::class.java))
+        }
+        }
+
 }

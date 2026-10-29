@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class PersonalInfoActivity : AppCompatActivity() {
+class PersonalInfoActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val prefs = getSharedPreferences("theme", MODE_PRIVATE)
         val isDark = prefs.getBoolean("isDark", true) // true = dark default

@@ -11,8 +11,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@android:drawable/ic_media_previous"
-            android:layout_marginEnd="12dp"
-            android:contentDescription="Back" />
+            android:layout_marginEnd="12dp" />
         <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="CineMap" android:textColor="?attr/colorOnBackground" android:textSize="18sp" android:textStyle="bold"/>
     </LinearLayout>
 
@@ -20,16 +19,16 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:gravity="center_horizontal">
             <LinearLayout android:layout_width="96dp" android:layout_height="96dp" android:background="@drawable/bg_circle_points" android:gravity="center" android:orientation="vertical">
                 <TextView android:text="★" android:textColor="#E0D4FF" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,250 pts" android:textColor="?attr/colorOnBackground" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvPoints" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 pts" android:textColor="?attr/colorOnBackground" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="4dp"/>
             </LinearLayout>
-            <TextView android:text="SILVER MEMBER" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/tvLevel" android:text="BRONZE MEMBER" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="16dp" android:background="?attr/colorSurfaceVariant" android:padding="12dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                     <TextView android:text="Progress to Gold" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="11sp" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
-                    <TextView android:text="250 pts left" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/tvPointsLeft" android:text="1500 pts left" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <ProgressBar android:id="@+id/progressGold" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="8dp" android:max="1500" android:progress="1250" android:progressTint="#E0D4FF"/>
+                <ProgressBar android:id="@+id/progressGold" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="8dp" android:max="1500" android:progress="0" android:progressTint="#E0D4FF"/>
             </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="20dp">
@@ -40,14 +39,19 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
                 <LinearLayout android:id="@+id/cardPopcorn" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="?attr/colorSurfaceVariant" android:padding="12dp" android:layout_marginEnd="8dp">
                     <TextView android:text="🍿" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="Free Popcorn" android:textColor="?attr/colorOnBackground" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="Small combo" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/tvPopcornTitle" android:text="Locked" android:textColor="?attr/colorOnBackground" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/tvPopcornDesc" android:text="Book 1 movie" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardDiscount" android:layout_width="0dp" android:layout_weight="1" android:layout_height="110dp" android:orientation="vertical" android:background="?attr/colorSurfaceVariant" android:padding="12dp" android:layout_marginStart="8dp">
                     <TextView android:text="🎟️" android:textSize="20sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="20% Off" android:textColor="?attr/colorOnBackground" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:text="Next Ticket" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/tvDiscountTitle" android:text="Locked" android:textColor="?attr/colorOnBackground" android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/tvDiscountDesc" android:text="Book 2 movies" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="10sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/cardGuru" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="?attr/colorSurfaceVariant" android:padding="12dp" android:layout_marginTop="12dp" android:visibility="gone">
+                <TextView android:text="🏆 MOVIE GURU BASKET" android:textColor="#E0D4FF" android:textSize="12sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <TextView android:text="Popcorn + Drink + Chocolate + Astros + 50% OFF" android:textColor="?attr/colorOnSurfaceVariant" android:textSize="11sp" android:layout_marginTop="4dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.example.cinemap.databinding.ActivityBookingBinding
 
-class BookingActivity : AppCompatActivity() {
+class BookingActivity : BaseActivity() {
 
     private lateinit var binding: ActivityBookingBinding
 
