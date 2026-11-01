@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.bumptech.glide.Glide
 import com.example.cinemap.databinding.ActivityPaymentBinding
 
 class PaymentActivity : BaseActivity() {
@@ -25,6 +26,7 @@ class PaymentActivity : BaseActivity() {
 
         // gets data from booking page
         val movieTitle = intent.getStringExtra("movie_title") ?: "The Last Cartographer"
+        val posterUrl = intent.getStringExtra("movie_poster")
         val format = intent.getStringExtra("format") ?: "Standard"
         val seats = intent.getStringExtra("seats") ?: "A1"
         val rows = intent.getStringExtra("rows") ?: "A"
@@ -43,12 +45,17 @@ class PaymentActivity : BaseActivity() {
         binding.tvTotal.text = "R$finalTotal"
         binding.btnConfirmPay.text = "🔒 Confirm & Pay R$finalTotal"
 
+        // load real movie poster image with glide in order summary
+        if (!posterUrl.isNullOrEmpty()) {
+            Glide.with(this).load(posterUrl).into(binding.imgPoster)
+        }
+
         binding.btnBack.setOnClickListener { finish() }
 
-        // payment methods
+        // payment methods selection logic
         fun selectPayment(method: String) {
             selectedMethod = method
-            // Reset all
+            // reset all selection states
             binding.cardVisa.background = getDrawable(R.drawable.bg_payment_unselected)
             binding.cardApple.background = getDrawable(R.drawable.bg_payment_unselected)
             binding.cardGoogle.background = getDrawable(R.drawable.bg_payment_unselected)
@@ -78,7 +85,7 @@ class PaymentActivity : BaseActivity() {
             }
         }
 
-        // default selected
+        // default selected payment method
         selectPayment("VISA")
 
         binding.cardVisa.setOnClickListener { selectPayment("VISA") }
@@ -89,14 +96,14 @@ class PaymentActivity : BaseActivity() {
             Toast.makeText(this, "Add new card - Coming soon", Toast.LENGTH_SHORT).show()
         }
 
-        // confirm and pay
+        // confirm and pay button click
         binding.btnConfirmPay.setOnClickListener {
             val intent = Intent(this, PaymentConfirmationActivity::class.java)
             intent.putExtra("movie_title", movieTitle)
-            intent.putExtra("seats", seats) // e.g. "G12, G13"
+            intent.putExtra("seats", seats)
             intent.putExtra("total_paid", finalTotal)
             intent.putExtra("payment_method", selectedMethod)
-            intent.putExtra("selected_date", "Today, 7:30 PM") // you can pass actual selected date from booking
+            intent.putExtra("selected_date", "Today, 7:30 PM")
             intent.putExtra("cinema", "Starlight Multiplex")
             startActivity(intent)
         }

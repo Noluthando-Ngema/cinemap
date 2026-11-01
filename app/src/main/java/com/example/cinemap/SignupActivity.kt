@@ -1,7 +1,15 @@
 package com.example.cinemap
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.LinkMovementMethod
+import android.text.method.PasswordTransformationMethod
+import android.text.style.ClickableSpan
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -26,25 +34,37 @@ class SignupActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // makes login link clickable ---
+        // makes login link clickable
         val fullText = "Already have an account? Login"
-        val spannable = android.text.SpannableString(fullText)
+        val spannable = SpannableString(fullText)
         val start = fullText.indexOf("Login")
-        val clickableSpan = object : android.text.style.ClickableSpan() {
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
                 finish()
             }
-            override fun updateDrawState(ds: android.text.TextPaint) {
+            override fun updateDrawState(ds: TextPaint) {
                 ds.color = getColor(R.color.purple_light)
                 ds.isUnderlineText = false
                 ds.isFakeBoldText = true
             }
         }
-        spannable.setSpan(clickableSpan, start, start+5, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan, start, start+5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.tvGoToLogin.text = spannable
-        binding.tvGoToLogin.movementMethod = android.text.method.LinkMovementMethod.getInstance()
-        binding.tvGoToLogin.highlightColor = android.graphics.Color.TRANSPARENT
+        binding.tvGoToLogin.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvGoToLogin.highlightColor = Color.TRANSPARENT
+
+        // toggle password visibility feature
+        var isPasswordVisible = false
+        binding.btnTogglePassword.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            } else {
+                binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+            }
+            binding.etPassword.setSelection(binding.etPassword.text.length)
+        }
 
         binding.btnSignup.setOnClickListener {
             if (validateAndSignup()) {
@@ -79,14 +99,14 @@ class SignupActivity : AppCompatActivity() {
 
         if (!isValid) return false
 
-        // firebase signup, password is hashed & encrypted by Firebase
+        // firebase signup, password is hashed & encrypted by firebase
         binding.btnSignup.isEnabled = false
         binding.btnSignup.text = "Creating account..."
 
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // password is hashed & encrypted by Firebase, never stored plain
+                    // password is hashed & encrypted by firebase, never stored plain
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {

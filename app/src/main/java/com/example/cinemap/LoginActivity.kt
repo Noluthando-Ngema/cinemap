@@ -1,7 +1,15 @@
 package com.example.cinemap
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.LinkMovementMethod
+import android.text.method.PasswordTransformationMethod
+import android.text.style.ClickableSpan
 import android.util.Patterns
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -26,24 +34,36 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // makes Sign up link clickable
+        // makes sign up link clickable
         val fullText = "Don't have an account? Sign up"
-        val spannable = android.text.SpannableString(fullText)
+        val spannable = SpannableString(fullText)
         val start = fullText.indexOf("Sign up")
-        val clickableSpan = object : android.text.style.ClickableSpan() {
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 startActivity(Intent(this@LoginActivity, SignupActivity::class.java))
             }
-            override fun updateDrawState(ds: android.text.TextPaint) {
+            override fun updateDrawState(ds: TextPaint) {
                 ds.color = getColor(R.color.purple_light)
                 ds.isUnderlineText = false
                 ds.isFakeBoldText = true
             }
         }
-        spannable.setSpan(clickableSpan, start, start + 7, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(clickableSpan, start, start + 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.tvGoToSignup.text = spannable
-        binding.tvGoToSignup.movementMethod = android.text.method.LinkMovementMethod.getInstance()
-        binding.tvGoToSignup.highlightColor = android.graphics.Color.TRANSPARENT
+        binding.tvGoToSignup.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvGoToSignup.highlightColor = Color.TRANSPARENT
+
+        // toggle password visibility feature
+        var isPasswordVisible = false
+        binding.btnTogglePassword.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                binding.etPasswordLogin.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            } else {
+                binding.etPasswordLogin.transformationMethod = PasswordTransformationMethod.getInstance()
+            }
+            binding.etPasswordLogin.setSelection(binding.etPasswordLogin.text.length)
+        }
 
         binding.btnLogin.setOnClickListener {
             loginWithFirebase()
@@ -61,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
 
         var isValid = true
 
-        // checks email format before hitting Firebase
+        // checks email format before hitting firebase
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tvEmailError.text = "incorrect email format"
             binding.tvEmailError.visibility = View.VISIBLE
@@ -83,17 +103,16 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // SUCCESS, Email & Password matched in Firebase Database
+                    // success, email & password matched in firebase database
                     val user = auth.currentUser
-                    // user is now logged in, password was verified with Firebase's hashed version
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
-                    // FAILED - Email or password incorrect
+                    // failed - email or password incorrect
                     binding.btnLogin.isEnabled = true
                     binding.btnLogin.text = "Login"
 
-                    //  error message
+                    // error message
                     binding.tvGeneralError.text = "email/ password incorrect, please try again, and if you haven't signed up, please signup"
                     binding.tvGeneralError.visibility = View.VISIBLE
                 }
