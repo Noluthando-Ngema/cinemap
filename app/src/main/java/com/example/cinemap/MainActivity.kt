@@ -43,6 +43,10 @@ class MainActivity : BaseActivity() {
         loadRealMovies()
         loadRealCinemas()
 
+        findViewById<TextView>(R.id.txtSeeAll).setOnClickListener {
+            startActivity(Intent(this, AllMoviesActivity::class.java))
+        }
+
         findViewById<TextView>(R.id.btnViewMap).setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_VIEW,

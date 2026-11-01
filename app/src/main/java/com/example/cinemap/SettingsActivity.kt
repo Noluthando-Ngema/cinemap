@@ -70,7 +70,7 @@ class SettingsActivity : BaseActivity() {
         }
 
         // ================= 2. LANGUAGE WITH REAL API TRANSLATION =================
-        val languages = arrayOf("English", "Afrikaans", "isiZulu")
+        val languages = arrayOf("English", "Afrikaans")
         val langAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, languages)
         spinnerLang.adapter = langAdapter
 

@@ -1,14 +1,17 @@
 package com.example.cinemap
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.example.cinemap.databinding.ActivityBookingBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BookingActivity : BaseActivity() {
 
@@ -42,11 +45,8 @@ class BookingActivity : BaseActivity() {
             binding.txtBookingMovieTitle.text = currentMovieTitle
             binding.txtBookingCinemaName.text = "Showing at: $cinemaName"
             binding.txtBookingShowTimes.text = showTimes
-            // binding.txtBookingRating.text = "★ $rating"
 
-            // load poster - make sure you have an ImageView in booking layout e.g. imgBookingPoster
             if (::binding.isInitialized) {
-                // binding.imgBookingPoster is example
                 Glide.with(this).load(posterUrl).into(binding.imgBookingPoster)
             }
         } catch (e: Exception) {
@@ -54,6 +54,9 @@ class BookingActivity : BaseActivity() {
         }
 
         binding.btnBack.setOnClickListener { finish() }
+
+        // Setup real-time calendar
+        setupCalendar()
 
         // build seats
         val rows = listOf("A", "B", "C", "D")
@@ -80,7 +83,7 @@ class BookingActivity : BaseActivity() {
                 seat.setTextColor(getColor(android.R.color.white))
                 seat.background = getDrawable(R.drawable.bg_seat_available)
                 seat.tag = "available"
-            // FIXED: seat taken
+                // FIXED: seat taken
                 if ((row == "B" && col == 3) || (row == "C" && col == 5)) {
                     seat.background = getDrawable(R.drawable.bg_seat_taken)
                     seat.tag = "taken"
@@ -115,7 +118,6 @@ class BookingActivity : BaseActivity() {
                 val seatsList = selectedSeatsMap.keys.joinToString(", ")
 
                 val intent = Intent(this, PaymentActivity::class.java)
-                // FIXED: Now uses real TMDB title, not hardcoded
                 intent.putExtra("movie_title", currentMovieTitle)
                 intent.putExtra("movie_poster", posterUrl)
                 intent.putExtra("cinema_name", cinemaName)
@@ -127,6 +129,63 @@ class BookingActivity : BaseActivity() {
             }
         }
     }
+
+    private fun setupCalendar() {
+        binding.dateContainer.removeAllViews()
+        val calendar = Calendar.getInstance()
+        val dayOfWeekFormat = SimpleDateFormat("EEE", Locale.getDefault())
+        val dayNumFormat = SimpleDateFormat("dd", Locale.getDefault())
+
+        for (i in 0 until 5) {
+            val dayName = if (i == 0) "TODAY" else dayOfWeekFormat.format(calendar.time).uppercase()
+            val dayNum = dayNumFormat.format(calendar.time)
+
+            val dateCard = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
+                    if (i < 4) setMargins(0, 0, 6, 0)
+                }
+                setBackgroundResource(if (i == 0) R.drawable.bg_date_selected else R.drawable.bg_date_unselected)
+                setPadding(8, 8, 8, 8)
+                gravity = Gravity.CENTER
+            }
+
+            val tvDay = TextView(this).apply {
+                text = dayName
+                textSize = 8f
+                setTypeface(null, Typeface.BOLD)
+                setTextColor(if (i == 0) 0xFF0B1020.toInt() else getColor(R.color.text_secondary))
+                gravity = Gravity.CENTER
+            }
+
+            val tvNum = TextView(this).apply {
+                text = dayNum
+                textSize = 16f
+                setTypeface(null, Typeface.BOLD)
+                setTextColor(if (i == 0) 0xFF0B1020.toInt() else getColor(R.color.text_primary))
+                gravity = Gravity.CENTER
+            }
+
+            dateCard.addView(tvDay)
+            dateCard.addView(tvNum)
+
+            dateCard.setOnClickListener {
+                for (j in 0 until binding.dateContainer.childCount) {
+                    val child = binding.dateContainer.getChildAt(j) as LinearLayout
+                    child.setBackgroundResource(R.drawable.bg_date_unselected)
+                    (child.getChildAt(0) as TextView).setTextColor(getColor(R.color.text_secondary))
+                    (child.getChildAt(1) as TextView).setTextColor(getColor(R.color.text_primary))
+                }
+                dateCard.setBackgroundResource(R.drawable.bg_date_selected)
+                tvDay.setTextColor(0xFF0B1020.toInt())
+                tvNum.setTextColor(0xFF0B1020.toInt())
+            }
+
+            binding.dateContainer.addView(dateCard)
+            calendar.add(Calendar.DAY_OF_YEAR, 1)
+        }
+    }
+
     // calculate total price
     private fun calculateTotal(): Int {
         var total = 0
@@ -141,7 +200,7 @@ class BookingActivity : BaseActivity() {
         val total = calculateTotal()
         binding.tvTicketCount.text = if (count == 0) "0 Tickets" else "$count Ticket${if (count > 1) "s" else ""} - ${selectedSeatsMap.keys.joinToString(", ")}"
         binding.tvTotalPrice.text = "R$total.00"
-    // disable button if no seats selected
+        // disable button if no seats selected
         if (count > 0) {
             binding.btnContinue.text = "Pay R$total"
             binding.btnContinue.backgroundTintList = getColorStateList(R.color.purple_light)

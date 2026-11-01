@@ -1,7 +1,9 @@
 package com.example.cinemap
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -37,6 +39,8 @@ class NotificationsActivity : BaseActivity() {
         loadNotifications()
 
         binding.chipAll.setOnClickListener { filter("All") }
+        binding.chipUnread.setOnClickListener { filter("Unread") }
+        binding.chipRead.setOnClickListener { filter("Read") }
         binding.chipTickets.setOnClickListener { filter("Tickets") }
         binding.chipRewards.setOnClickListener { filter("Rewards") }
 
@@ -64,7 +68,7 @@ class NotificationsActivity : BaseActivity() {
                     n?.copy(id = it.id)
                 }
                 updateUnread()
-                renderList(allNotifications)
+                filter(currentFilter)
             }
     }
 
@@ -72,10 +76,23 @@ class NotificationsActivity : BaseActivity() {
         currentFilter = type
         // update chip UI
         binding.chipAll.setBackgroundResource(if (type == "All") R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
+        binding.chipUnread.setBackgroundResource(if (type == "Unread") R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
+        binding.chipRead.setBackgroundResource(if (type == "Read") R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
         binding.chipTickets.setBackgroundResource(if (type == "Tickets") R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
         binding.chipRewards.setBackgroundResource(if (type == "Rewards") R.drawable.bg_chip_selected else R.drawable.bg_chip_unselected)
 
+        val selectedTextColor = 0xFF0B1020.toInt()
+        val unselectedTextColor = getColor(R.color.text_secondary)
+
+        binding.chipAll.setTextColor(if (type == "All") selectedTextColor else unselectedTextColor)
+        binding.chipUnread.setTextColor(if (type == "Unread") selectedTextColor else unselectedTextColor)
+        binding.chipRead.setTextColor(if (type == "Read") selectedTextColor else unselectedTextColor)
+        binding.chipTickets.setTextColor(if (type == "Tickets") selectedTextColor else unselectedTextColor)
+        binding.chipRewards.setTextColor(if (type == "Rewards") selectedTextColor else unselectedTextColor)
+
         val filtered = when (type) {
+            "Unread" -> allNotifications.filter { !it.isRead }
+            "Read" -> allNotifications.filter { it.isRead }
             "Tickets" -> allNotifications.filter { it.title.contains("Booking") || it.title.contains("Movie") || it.badgeId.contains("ticket") }
             "Rewards" -> allNotifications.filter { it.title.contains("XP") || it.title.contains("Reward") || it.xp > 0 }
             else -> allNotifications
@@ -90,7 +107,7 @@ class NotificationsActivity : BaseActivity() {
                 text = "You're all caught up."
                 setTextColor(getColor(R.color.text_secondary))
                 setPadding(0, 100, 0, 0)
-                gravity = android.view.Gravity.CENTER
+                gravity = Gravity.CENTER
             }
             binding.notificationsContainer.addView(empty)
             return
@@ -128,15 +145,21 @@ class NotificationsActivity : BaseActivity() {
         }
         binding.notificationsContainer.addView(headerView)
 
-        val inflater = LayoutInflater.from(this)
         for (item in items) {
             val isTicket = item.title.contains("Booking", true) || item.title.contains("Ticket", true)
             val card = LinearLayout(this).apply {
                 orientation = LinearLayout.VERTICAL
-                setBackgroundResource(R.drawable.bg_card) // your card bg or colorSurfaceVariant
+                setBackgroundResource(R.drawable.bg_card)
                 setPadding(32, 32, 32, 32)
                 layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
                     bottomMargin = 24
+                }
+                setOnClickListener {
+                    // Mark as read when clicked
+                    if (!item.isRead) {
+                        val uid = auth.currentUser?.uid ?: return@setOnClickListener
+                        db.collection("users").document(uid).collection("notifications").document(item.id).update("isRead", true)
+                    }
                 }
             }
 
@@ -157,7 +180,7 @@ class NotificationsActivity : BaseActivity() {
                 text = item.title
                 textSize = 14f
                 setTextColor(getColor(R.color.text_primary))
-                setTypeface(null, android.graphics.Typeface.BOLD)
+                setTypeface(null, Typeface.BOLD)
                 setPadding(0, 12, 0, 0)
             }
             val msg = TextView(this).apply {
